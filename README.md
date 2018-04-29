@@ -1,6 +1,6 @@
 ## Proposal for the 3rd Group Project
 ### Team Members
-Jagatha Rangasamy<br>
+Jagatha Easwaramoorthy<br>
 Vijaya Tatinneni<br>
 Abdullah Alfai<br>
 Alex Leontiev
