@@ -1,0 +1,122 @@
+h6{
+    color: white;
+}
+
+.mySample{
+    padding: 10px;
+    height: auto;
+    background-color: #e9eff0;
+}
+
+.myCheckBoxeLabels{
+    padding: 0px 5px 0px 10px;
+}
+
+.myCheckBoxes{
+    margin:10px !important;
+}
+
+.cardHeader{
+    padding: 10px 0px 0px 10px;
+    background-color: #95988f;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+#selYear{
+    height: 46px;
+}
+
+.myrow{
+    margin-top: 80px;
+}
+
+
+.my-sub-nav-container ul li { 
+    display: inline; 
+    padding-right: 100px;
+}
+
+.my-sub-nav-container a{
+    text-decoration: none;
+}
+
+.my-sub-nav-container img{
+    height:20px;
+    width:15px;
+    margin-right: 5px;
+}
+
+.myStateDropdown select{
+    display: inline; 
+}
+
+.myStateCheckboxes {
+    display: none;
+}
+
+/****************************************************************/
+
+  
+  /* stylesheet for your custom graph */
+  
+  .categories {
+    fill: none;
+    stroke: #fff;
+    stroke-linejoin: round;
+  }
+  
+  .categories-choropleth {
+    fill: #ccc;
+  }
+  
+  #tooltip-container {
+    position: absolute;
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    border: 1px solid;
+    display: none;
+  }
+  
+  #canvas svg {
+    border: 0px;
+  }
+  
+  .tooltip_key {
+    font-weight: bold;
+  }
+  
+  .tooltip_value {
+    margin-left: 20px;
+    float: right;
+  }
+  
+  .x-axis {
+    fill: #000;
+  }
+  
+  .chart {
+    background: #fff;
+    margin: 5px;
+  }
+   
+  .chart .score {
+    fill: white;
+  }
+   
+  .chart text.name {
+    fill: #000;
+  }
+   
+  .chart line {
+    stroke: #c1c1c1;
+  }
+   
+  .chart .rule {
+    fill: #000;
+  }
+  
+  .main-category-text {
+    fill: #FF4A4A;
+  }
