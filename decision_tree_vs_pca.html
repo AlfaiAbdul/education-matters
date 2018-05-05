@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Plotly.js -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      </head>
+      <body>
+      <!-- Plotly chart will be drawn inside this DIV -->
+      <div class="container">
+            <div class="row">
+                    <div class="col-md-4" >
+                      <div id="myDiv1" style="width:400px; height:400px;"></div>
+                    </div>
+                    <div class="col-md-8" >
+                        <h4>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        After performing decision tree and PCA analysis we ended up with 10 features that affect earnings the most. The ten features are: 
+                        [[Median Household Income, Tuition, SAT's Avg, Age @ Entry, Poverty_Rate, % of Female, % White, % Black, % Hispanic, % Asian]. Both analysis produce
+                        numbers, the higher the number the more importatnt the feature. Note that decision tree analysis produced numbers that ranges bwtween 0.215 and 0.046 
+                        While PCA produced numbers varies between 1.919e+06 and 2.334e+00, so we had to manipulate the two sets of outcomes to fit it in one graph.
+                        </h4>
+                    </div>
+                </div>
+            </div>
+                      
+      <div id="myDiv2" style="width:1300px; height:800px;">
+      <h3>
+        [Median Household Income, Tuition, SAT's Avg, Age @ Entry, Poverty_Rate]
+       </h3>
+       </div>
+        <script>
+        /* JAVASCRIPT CODE GOES HERE */
+        // initial data..
+        //my data'PCT_WHITE', 'PCT_BLACK','PCT_ASIAN', 'PCT_HISPANIC', 'MEDIAN_HH_INC'
+        //     'POVERTY_RATE', 'SAT_AVG', 'TUITIONFEE_IN','AGE_ENTRY', 'FEMALE'           
+
+z1 = [
+    [2.326e+05, 1.919e+06, 3.582e+03, 2.060e+02, 1.250e+02, 2.334e+00, 1.073e+02, 4.455e+02, 2.375e+01, 3.554e+01],
+    [2.326e+05, 1.919e+06, 3.582e+03, 2.060e+02, 1.250e+02, 2.334e+00, 1.073e+02, 4.455e+02, 2.375e+01, 3.554e+01]   
+];
+// generating data for other traces..
+z2 = [
+    [0.14184128315830788 * 10000000, 0.21580472579609597 * 10000000, 0.14058330211841669 * 10000000, 0.073204513026897663 * 10000000, 0.056540277155165131 * 10000000, 0.098076239010250921 * 10000000, 0.049634273812023323 * 10000000, 0.04629417023110028 * 10000000, 0.11858196633524037 * 10000000, 0.059439249356501717 * 10000000],
+    [0.14184128315830788 * 10000000, 0.21580472579609597 * 10000000, 0.14058330211841669 * 10000000, 0.073204513026897663 * 10000000, 0.056540277155165131 * 10000000, 0.098076239010250921 * 10000000, 0.049634273812023323 * 10000000, 0.04629417023110028 * 10000000, 0.11858196633524037 * 10000000, 0.059439249356501717 * 10000000]
+];
+//for (var i=0;i<z1.length;i++ ) { 
+   // z2_row = [];
+   // for(var j=0;j<z1[i].length;j++) { 
+       // z2_row.push(z1[i][j]+1);
+    //}
+    //z2.push(z2_row);
+//}
+
+z3 = [
+//[2.326e+05, 3.582e+03, 1.919e+06, 2.060e+04, 1.250e+02, 2.334e+00, 1.073e+02, 4.455e+02, 2.375e+01, 2.375e+02],
+    //[1.073e+02 * 1000, 4.455e+02, 3.554e+01 * 10000, 2.375e+02 * 1000, 2.326e+05, 1.250e+02 * 1000, 3.582e+03 * 10, 1.919e+06, 2.060e+02 * 1000, 2.334e+00 * 100000]
+]
+//for (var i=0;i<z1.length;i++ ) { 
+  //  z3_row = [];
+    //for(var j=0;j<z1[i].length;j++) { 
+      //  z3_row.push(z1[i][j]-1);
+    //}
+    //z3.push(z3_row);
+//}
+
+// creating data objects..
+var PCA = {z: z1, type: 'surface'};
+var decision_tree = {z: z2, showscale: false, opacity:0.9, type: 'surface'};
+var data_z3 = {z: z3, showscale: false, opacity:0.9, type: 'surface'};
+
+// Plotting the surfaces..
+
+Plotly.newPlot('myDiv1', [
+                         PCA,
+                         decision_tree,
+                         //data_z3
+                         ]);
+
+        </script>
+         
+        <script>
+            /* JAVASCRIPT CODE GOES HERE */
+            // initial data..
+            //my data'PCT_WHITE', 'PCT_BLACK','PCT_ASIAN', 'PCT_HISPANIC', 'MEDIAN_HH_INC'
+            //     'POVERTY_RATE', 'SAT_AVG', 'TUITIONFEE_IN','AGE_ENTRY', 'FEMALE'           
+    
+    z1 = [
+        [432.6, 919,335.82, 596.0, 125], // 1.250e+02, 2.334e+00, 1.073e+02, 4.455e+02, 2.375e+01, 2.375e+02],
+        [432.6, 919,335.82, 596.0, 125] // 1.250e+02, 2.334e+00, 1.073e+02, 4.455e+02, 2.375e+01, 2.375e+02]   
+    ];
+    // generating data for other traces..
+    z2 = [
+        [141.84128315830788, 218.0472579609597, 140.58330211841669, 73.204513026897663, 56.540277155165131], // 0.056540277155165131, 0.098076239010250921, 0.049634273812023323, 0.04629417023110028, 0.11858196633524037, 0.059439249356501717],
+        [141.84128315830788, 218.0472579609597, 140.58330211841669, 73.204513026897663, 56.540277155165131] // 0.056540277155165131, 0.098076239010250921, 0.049634273812023323, 0.04629417023110028, 0.11858196633524037, 0.059439249356501717]
+    ];
+    //for (var i=0;i<z1.length;i++ ) { 
+       // z2_row = [];
+       // for(var j=0;j<z1[i].length;j++) { 
+           // z2_row.push(z1[i][j]+1);
+        //}
+        //z2.push(z2_row);
+    //}
+    
+    z3 = [
+    //[2.326e+05, 3.582e+03, 1.919e+06, 2.060e+04, 1.250e+02, 2.334e+00, 1.073e+02, 4.455e+02, 2.375e+01, 2.375e+02],
+        //[0.14184128315830788, 0.21580472579609597, 0.14058330211841669, 0.073204513026897663, 0.056540277155165131, 0.098076239010250921, 0.049634273812023323, 0.04629417023110028, 0.11858196633524037, 0.059439249356501717]
+    ]
+    //for (var i=0;i<z1.length;i++ ) { 
+      //  z3_row = [];
+        //for(var j=0;j<z1[i].length;j++) { 
+          //  z3_row.push(z1[i][j]-1);
+        //}
+        //z3.push(z3_row);
+    //}
+    
+    // creating data objects..
+    var PCA = {z: z1, type: 'surface'};
+    var decision_tree = {z: z2, showscale: false, opacity:0.9, type: 'surface'};
+    var data_z3 = {z: z3, showscale: false, opacity:0.9, type: 'surface'};
+    
+    // Plotting the surfaces..
+    
+    Plotly.newPlot('myDiv2', [
+                             PCA,
+                             decision_tree,
+                             //data_z3
+                             ]);
+    
+            </script>
+      </body>
+        
+</html>      
