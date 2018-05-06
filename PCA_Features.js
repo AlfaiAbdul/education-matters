@@ -22,17 +22,17 @@ d3.select(".chart")
 	.attr("class", "tooltip")
 	.style("opacity", 0);
 
-d3.csv("my_data1.csv", function(err, mydata) {
+d3.csv("my_dataNoZeros1.csv", function(err, mydata) {
 	if (err) throw err;
 
 			mydata.forEach(function(data) {
-				data.MEDIAN_HH_INC = +data.MEDIAN_HH_INC;
+				data.PCIP27 = +data.PCIP27;
 				data.MN_EARN_WNE_P10 = +data.MN_EARN_WNE_P10;
 				//2nd chart
-				data.TUITIONFEE_IN = +data.TUITIONFEE_IN
+				data.PCIP11 = +data.PCIP11
 				data.MN_EARN_WNE_P10 = +data.MN_EARN_WNE_P10
 				//3rd chart
-				data.SAT_AVG = +data.SAT_AVG
+				data.PCIP14 = +data.PCIP14
 				data.MN_EARN_WNE_P10 = +data.MN_EARN_WNE_P10
 			});
 			console.log(mydata)
@@ -73,13 +73,13 @@ d3.csv("my_data1.csv", function(err, mydata) {
 				});
 			}
 
-			// The default x-axis is 'MEDIAN_HH_INC'
+			// The default x-axis is 'PCIP27'
 			// Another axis can be assigned to the variable during an onclick event.
 			// This variable is key to the ability to change axis/data column
-			var currentAxisLabelX = "MEDIAN_HH_INC";
+			var currentAxisLabelX = "PCIP27";
 			var currentAxisLabelY = "MN_EARN_WNE_P10";
 
-			// Call findMinAndMax() with 'MEDIAN_HH_INC' as default
+			// Call findMinAndMax() with 'PCIP27' as default
 			findMinAndMax(currentAxisLabelX);
 			findMinAndMax(currentAxisLabelY);
 
@@ -89,8 +89,8 @@ d3.csv("my_data1.csv", function(err, mydata) {
 			yLinearScale.domain([yMin,yMax]);
 
 		// defining tooltip 
-		//2nd chart - TUITIONFEE_IN && MN_EARN_WNE_P10
-		//3rd chart - SAT_AVG && MN_EARN_WNE_P10
+		//2nd chart - PCIP11 && MN_EARN_WNE_P10
+		//3rd chart - PCIP14 && MN_EARN_WNE_P10
 			var toolTip = d3.tip()
 					.attr("class", "tooltip")
 					.offset([80, -60])
@@ -103,25 +103,25 @@ d3.csv("my_data1.csv", function(err, mydata) {
 						var ydata = +data[currentAxisLabelY];
 
 						// 1st chart data fields
-						var MEDIAN_HH_INC = +data.MEDIAN_HH_INC;
+						var PCIP27 = +data.PCIP27;
 						var MN_EARN_WNE_P10 = +data.MN_EARN_WNE_P10;
 						// 2nd chart data fields
-						var TUITIONFEE_IN = +data.TUITIONFEE_IN
+						var PCIP11 = +data.PCIP11
 						var MN_EARN_WNE_P10 = +data.MN_EARN_WNE_P10
 						// 3rd chart data fields
-						var SAT_AVG = +data.SAT_AVG
+						var PCIP14 = +data.PCIP14
 						var MN_EARN_WNE_P10 = +data.MN_EARN_WNE_P10
 
 						// designing tool tip based on which X-AXIS is active
 
-						if (currentAxisLabelX === 'MEDIAN_HH_INC') {
-							xinfo = "MEDIAN_HH_INC: " + MEDIAN_HH_INC;
+						if (currentAxisLabelX === 'PCIP27') {
+							xinfo = "PCIP27: " + PCIP27;
 						}
-						else if (currentAxisLabelX === 'TUITIONFEE_IN') {
-							xinfo = "TUITIONFEE_IN:" + TUITIONFEE_IN
+						else if (currentAxisLabelX === 'PCIP11') {
+							xinfo = "PCIP11:" + PCIP11
 						}
 						else {
-							xinfo = "SAT_AVG:" + SAT_AVG
+							xinfo = "PCIP14:" + PCIP14
 						}
 						// return (state + xinfo + xdata);
 						// designing tool tip based on which Y-AXIS is active
@@ -148,7 +148,7 @@ d3.csv("my_data1.csv", function(err, mydata) {
 						.data(mydata)
 						.enter().append("circle")
 						.attr("cx", function(data, index) {
-							// console.log(data.MEDIAN_HH_INC);
+							// console.log(data.PCIP27);
 							return xLinearScale(+data[currentAxisLabelX]);
 						})
 						.attr("cy", function(data, index) {
@@ -205,7 +205,7 @@ d3.csv("my_data1.csv", function(err, mydata) {
 					.attr("dy", "1em")
 					.attr("class", "yaxisText yactive")
 					.attr("data-axis-name", "MN_EARN_WNE_P10")
-					.text("MN_EARN_WNE_P10");
+					.text("Mean Earning 10 yrs post grd.");
 
 		//append y-label for inactive y-axis
 		 chart.append("text")
@@ -231,8 +231,8 @@ d3.csv("my_data1.csv", function(err, mydata) {
 			chart.append("text")
 				.attr("transform", "translate(" + (width / 3) + " ," + (height + margin.top + 20) + ")")
 				.attr("class", "xaxisText xactive")
-				.attr("data-axis-name", "MEDIAN_HH_INC")
-				.text(  "  <Median HH Income> ");
+				.attr("data-axis-name", "PCIP27")
+				.text("Mathematics And Statistics");
 
 		// Append x-axis labels for in-active x-axis
 			chart
@@ -242,8 +242,8 @@ d3.csv("my_data1.csv", function(err, mydata) {
 					"translate(" + width / 2.85 + " ," + (height + margin.top + 40) + ")")
 				// This axis label is inactive by default
 				.attr("class", "xaxisText xinactive")
-				.attr("data-axis-name", "TUITIONFEE_IN")
-				.text( " <---------Tuition--------->");
+				.attr("data-axis-name", "PCIP11")
+				.text("Computer Science");
 		// Append x-axis labels for in-active x-axis
 			chart
 				.append("text")
@@ -251,8 +251,8 @@ d3.csv("my_data1.csv", function(err, mydata) {
 					"transform",
 					"translate(" + width / 2.75 + " ," + (height + margin.top + 60) + ")")
 				.attr("class", "xaxisText xinactive")
-				.attr("data-axis-name", "SAT_AVG")
-				.text("<SAT's test Score Average> ");
+				.attr("data-axis-name", "PCIP14")
+				.text("Engineering");
 
 		//==================================================================================//
 			// Change an x-axis's status from inactive to active when clicked (if it was inactive)
