@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Education Matters</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js">  </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">    
+   
+</head>
+
+<body>
+     
+    <div class="container-fluid ">
+        <div class="row">
+                <nav class="navbar fixed-top navbar-expand-md navbar-light  bg-white" style="padding: 0px; height:60px; background:lightblue !important; align-items:baseline">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html" style="margin-left:50px; padding:5px;  color:white; font-size:24px; font-weight:bold;font-family: Arial;">Can we predict graduate Earnings?</a>        
+                </nav>
+        </div>
+        <div class="row myrow">
+        <div class="col-lg-12">
+                    <div class="card">
+                            <div class="card-header">
+                              <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                  <a class="nav-link active" href="#">Introduction</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="observations">Observations</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="cluster">Feature Clustering</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="features">Feature Selection</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="prediction">Predictive Analytics</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="cluster_3d">Cluster Analysis</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="card-body">
+                              <h3 class="card-title">Education Matters</h3>
+                              <p class="card-text">
+                                    We chose this data set for the wealth of info if offered: over 7K records of academic 
+                                    institutions, each record comprised of about 1.2K columns.
+                                    <br>
+                                    This mountain of data was condensed/compressed into a kernel of 989 institutions 
+                                    with 70 columns, using a process of pruning empty and unneeded columns followed by 
+                                    removal of records containing privacy-suppressed fields. 
+                                    <br>
+                                    <h5><b>Data Source: </b><a href="https://collegescorecard.ed.gov/data/">College Scorecard Data</a> </h5>
+                              </p>
+                              <p class="card-text">
+                                    We then applied supervised and unsupervised Machine Learning techniques to explore the following:
+                                    <br>
+                                    1. What are the prominent features that determine earning potential for graduating students?
+                                    <br>
+                                    2. Is there a set of features (eg major) that can be used to predict the earning potential for graduating students?
+                                    <br>
+                                    3. What, if any, natural groupings can be found in the set of features explored the above questions?
+                                    <br> <br>
+                                    <b>Approach:</b> Decision Tree and PCA were used for feature selection; multi-variate regression analysis was 
+                                    trained on the top ten dominant features driving post graduate income; cluster analysis was applied to 
+                                    identify natural grouping among the top three features used in regression analysis. Findings and observations are detailed in subsequent tabs.
+                              </p>
+                            </div>       
+                    </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <div class="card-footer">
+        <p>© Copyright Data Analytics Bootcamp 2018</p>
+    </div> 
+  </body>
+  </html>

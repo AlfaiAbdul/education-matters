@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Education Matters</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://d3js.org/d3.v4.min.js"></script>  
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">       
+</head>
+
+<body>    
+    <div class="container-fluid ">
+        	<div class="row">
+                <nav class="navbar fixed-top navbar-expand-md navbar-light  bg-white" style="padding: 0px; height:60px; background:lightblue !important; align-items:baseline">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html" style="margin-left:50px; padding:5px;  color:white; font-size:24px; font-weight:bold;font-family: Arial;">Can we predict graduate Earnings?</a>        
+				</nav>
+        	</div>
+        	<div class="row myrow">
+				<div class="col-lg-12">
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs">
+								<li class="nav-item">
+									<a class="nav-link" href="index">Introduction</a>
+								</li>
+                                <li class="nav-item">
+									<a class="nav-link" href="observations">Observations</a>
+								  </li>
+								  <li class="nav-item">
+									<a class="nav-link" href="cluster">Feature Clustering</a>
+								  </li>
+								  <li class="nav-item">
+									<a class="nav-link" href="features">Feature Selection</a>
+								  </li>
+								  <li class="nav-item">
+									<a class="nav-link active" href="#">Predictive Analytics</a>
+								  </li>
+								  <li class="nav-item">
+										<a class="nav-link" href="cluster_3d">Cluster Analysis</a>
+								  </li>
+							</ul>
+						</div>
+						<div class="card-body">
+							<h5 class="card-title">Education Matters</h5>
+							
+							<div class="row">
+								<div class="col-lg-4">															
+										
+								<form>
+									<div class="form-group">
+										<label for="SATScore"> SAT Score: </label>
+										<input type="number" class="form-control" id="satAvg" placeholder="SATScore">
+									</div>
+									<div class="form-group">
+										<label for="fee"> Tuition Fee: </label>
+										<input type="number" class="form-control" id="tutionFee" placeholder="Tuition fee">
+									</div>
+									<div class="form-group">
+										<label for="fee" > Age: </label>
+										<input type="number" class="form-control" id="age" placeholder="Age">
+									</div>
+									<div class="form-group">
+										<label for="income" >Household Income: </label>
+										<input type="number" class="form-control" id="hhIncome" placeholder="HH Income">
+									</div>
+										<button type="submit" class="btn btn-primary" value="submit">Predict Range</button>
+										<button type="submit" class="btn btn-primary" onclick="getDependentValues()">Predict Earning</button>
+
+								</form>
+										<h1>{{ range }}</h1>
+										<h1>{{ income }}</h1>
+								</div>
+								<div class="col-lg-8">
+										<h3 class="heading text-center">Linear Regression Analysis Predictions</h3>										
+										<img src="{{ url_for('static', filename='LR_trend_large.png') }}" class="img-fluid" alt="Responsive image">	
+								</div>
+							</div>
+						</div>	
+						</div>
+
+			</div>
+		</div>    
+    </div>
+    </div>
+    
+	<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+		<div class="card-footer">
+        <p>© Copyright Data Analytics Bootcamp 2018</p>
+    </div> 
+</body>
+
+</html>
