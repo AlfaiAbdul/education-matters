@@ -70,9 +70,10 @@
 										<label for="income" >Household Income: </label>
 										<input type="number" class="form-control" id="hhIncome" placeholder="HH Income">
 									</div>
-										<button type="submit" class="btn btn-primary" id= "predict-btn" value="submit" >Predict Range</button>
+										<button type="submit" class="btn btn-primary" id= "predict-btn" value="submit" >Predict Income</button>
 								</form>
 					
+									<h5 id="range"></h5>
 									<h5 id="income"></h5>
 										
 								</div>
@@ -114,15 +115,13 @@
 
 					var data = response
 					
-					document.getElementById("income").innerHTML = "Predicted Income Range: " + data;
+					document.getElementById("range").innerHTML = "Predicted Income Range (in $): " + data[0]['range'];
+					document.getElementById("income").innerHTML = "Predicted Income (in $): " + data[0]['value'];
 			});  
 		   
 		});
 	  </script>
-<!--  
-	<script src="{{ url_for('static', filename='js/app.js') }}"></script>
--->
-		<div class="card-footer">
+	<div class="card-footer">
         <p>© Copyright Data Analytics Bootcamp 2018</p>
     </div> 
 </body>
