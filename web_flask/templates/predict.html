@@ -53,7 +53,7 @@
 							<div class="row">
 								<div class="col-lg-4">															
 										
-								<form>
+								<form onsubmit="return false">
 									<div class="form-group">
 										<label for="SATScore"> SAT Score: </label>
 										<input type="number" class="form-control" id="satAvg" placeholder="SATScore">
@@ -70,12 +70,12 @@
 										<label for="income" >Household Income: </label>
 										<input type="number" class="form-control" id="hhIncome" placeholder="HH Income">
 									</div>
-										<button type="submit" class="btn btn-primary" value="submit">Predict Range</button>
+										<button type="submit" class="btn btn-primary" id= "predict-btn" value="submit" >Predict Range</button>
 										<button type="submit" class="btn btn-primary" onclick="getDependentValues()">Predict Earning</button>
 
 								</form>
-										<h1>{{ range }}</h1>
-										<h1>{{ income }}</h1>
+									<h1 id="income"></h1>
+										
 								</div>
 								<div class="col-lg-8">
 										<h3 class="heading text-center">Linear Regression Analysis Predictions</h3>										
@@ -89,8 +89,43 @@
 		</div>    
     </div>
     </div>
-    
+    <script type="text/javascript">
+		// This .on("click") function will trigger the request
+		d3.select("#predict-btn").on("click", function(event) {
+  
+		  // d3.event.preventDefault() can be used to prevent an event's default behavior.
+		  // Here, it prevents the submit button from trying to submit a form when clicked
+		  d3.event.preventDefault();
+  
+		  // Here we grab the text from the input box
+		  var satAvg = d3.select("#satAvg").node().value;
+		  var tutionFee = d3.select("#tutionFee").node().value;
+		  var age = d3.select("#age").node().value;
+	      var hhIncome = d3.select("#hhIncome").node().value;
+
+			console.log("satAvg : ", satAvg);
+			console.log("tutionFee : ", tutionFee);
+			console.log("age : ", age);
+			console.log("hhIncome : ", hhIncome);
+
+			url = "/prediction/"+satAvg+"/"+tutionFee+"/"+age+"/"+hhIncome
+			d3.json(url, function (error, response) {
+					console.log("Inside API")
+					console.log(response);
+
+					var data = response
+					
+					document.getElementById("income").innerHTML = data['value'];
+			});  
+		  
+  
+		 // d3.select("h2>span").text(movie);
+  
+		});
+	  </script>
+<!--  
 	<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+-->
 		<div class="card-footer">
         <p>© Copyright Data Analytics Bootcamp 2018</p>
     </div> 

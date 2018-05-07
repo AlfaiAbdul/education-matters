@@ -10,13 +10,19 @@ import pickle
 app = Flask(__name__)
 
 
+def getPredictedEarningsRange(sat,tution,age,hhincome):    
+    with open('TreeModelFile', 'rb') as f:
+        tree_model = pickle.load(f)
+        predicted_range = tree_model.predict(np.reshape([sat,tution,age,hhincome], (1,4)))
+        print("predicted_val tree_model", predicted_range)
+        return predicted_range[0]
+
 def getPredictedEarnings(sat,tution,age,hhincome):    
-    with open('modelFile', 'rb') as f:
-        my_model = pickle.load(f)
-        print("sat getPredictedEarnings ", sat)
-        predicted_val = my_model.predict(np.reshape([sat,tution,age,hhincome], (1,4)))
-        print("predicted_val", predicted_val)
-        return predicted_val[0]
+    with open('lr_model', 'rb') as m_file:
+        reg_model = pickle.load(m_file)
+        predicted_val = reg_model.predict(np.reshape([sat,age,hhincome,tution], (1,4)))[0][0]
+        print("predicted_val reg_model", predicted_val)
+        return predicted_val
 #rf_2 = pickle.loads(f)
 
 @app.route("/")
@@ -36,20 +42,10 @@ def features():
 def cluster_3d():
     return render_template("cluster_3d.html")
 
-@app.route("/prediction", methods = ['POST','GET'])
+@app.route("/prediction")
 def predict():
-
-    # return render_template("predict.html")
-	if request.method == 'POST':
-		age = request.form.get('age')
-		satAvg = request.form.get('satAvg')
-		tutionFee = request.form.get('tutionFee')
-		hhIncome = request.form.get('hhIncome')
-		predicted_val = getPredictedEarnings(satAvg,tutionFee,age,hhIncome)
-		return redirect("predict.html", range = predicted_val)
-	else:
-      # return redirect(url_for('index'))
-		return render_template("predict.html")
+    return render_template("predict.html")
+	
 
 @app.route("/cluster")
 def cluster():
@@ -61,8 +57,13 @@ def observations():
     
 @app.route('/prediction/<sat>/<tution>/<age>/<hhincome>')
 def prediction(sat,tution,age,hhincome):
-    predicted_val = getPredictedEarnings(sat,tution,age,hhincome)
-    return jsonify(predicted_val)
+    predicted_range = getPredictedEarningsRange(sat,tution,age,hhincome)  
+    predicted_val = getPredictedEarnings(sat,tution,age,hhincome) 
+    out_dict=[] 
+    out_dict['value'] = predicted_val
+    out_dict['range'] = predicted_range
+    return jsonify(out_dict)
+
     
 
 if __name__ == '__main__':

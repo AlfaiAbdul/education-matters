@@ -1,5 +1,6 @@
 
-function getDependentValues(){
+function getDependentValues(e){
+    e.preventDefault();  
     var satAvg = d3.select("#satAvg").node().value;
     var tutionFee = d3.select("#tutionFee").node().value;
     var age = d3.select("#age").node().value;
@@ -19,9 +20,10 @@ function getDependentValues(){
 
             var data = response
             stuIncome = response;
+            document.getElementById("income").innerHTML = stuIncome;
     });  
 	
-	document.getElementById("income").innerHTML = stuIncome;	
+		
 }
 
 
