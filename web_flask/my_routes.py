@@ -15,6 +15,7 @@ def getPredictedEarningsRange(sat,tution,age,hhincome):
         tree_model = pickle.load(f)
         predicted_range = tree_model.predict(np.reshape([sat,tution,age,hhincome], (1,4)))
         print("predicted_val tree_model", predicted_range)
+        f.close()
         return predicted_range[0]
 
 def getPredictedEarnings(sat,tution,age,hhincome):    
@@ -22,6 +23,7 @@ def getPredictedEarnings(sat,tution,age,hhincome):
         reg_model = pickle.load(m_file)
         predicted_val = reg_model.predict(np.reshape([sat,age,hhincome,tution], (1,4)))[0][0]
         print("predicted_val reg_model", predicted_val)
+        m_file.close()
         return predicted_val
 #rf_2 = pickle.loads(f)
 
@@ -58,11 +60,11 @@ def observations():
 @app.route('/prediction/<sat>/<tution>/<age>/<hhincome>')
 def prediction(sat,tution,age,hhincome):
     predicted_range = getPredictedEarningsRange(sat,tution,age,hhincome)  
-    predicted_val = getPredictedEarnings(sat,tution,age,hhincome) 
-    out_dict=[] 
-    out_dict['value'] = predicted_val
-    out_dict['range'] = predicted_range
-    return jsonify(out_dict)
+    # predicted_val = getPredictedEarnings(sat,tution,age,hhincome) 
+    # out_dict=[] 
+    # out_dict['value'] = predicted_val
+    # out_dict['range'] = predicted_range
+    return jsonify(predicted_range)
 
     
 

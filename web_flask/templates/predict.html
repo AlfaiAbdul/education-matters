@@ -71,10 +71,9 @@
 										<input type="number" class="form-control" id="hhIncome" placeholder="HH Income">
 									</div>
 										<button type="submit" class="btn btn-primary" id= "predict-btn" value="submit" >Predict Range</button>
-										<button type="submit" class="btn btn-primary" onclick="getDependentValues()">Predict Earning</button>
-
 								</form>
-									<h1 id="income"></h1>
+					
+									<h5 id="income"></h5>
 										
 								</div>
 								<div class="col-lg-8">
@@ -115,12 +114,9 @@
 
 					var data = response
 					
-					document.getElementById("income").innerHTML = data['value'];
+					document.getElementById("income").innerHTML = "Predicted Income Range: " + data;
 			});  
-		  
-  
-		 // d3.select("h2>span").text(movie);
-  
+		   
 		});
 	  </script>
 <!--  
