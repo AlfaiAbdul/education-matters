@@ -9,8 +9,8 @@ Alex Leontiev
 
 1. What are the prominent features that determine earning potential for graduating students?
 2. Is there a set of features that can be used to predict the earning potential?
-3. What, if any, natural groupings can be found in the set of features explored the above questions?
-Using Machine Learning (ML) techniques, we scrutinized the relationship among various features—demographic, economic and others like major and tuition—and their impact to earning 10 years post graduation date.
+3. What, if any, natural groupings can be found in the set of features explored in the above questions?
+<p>Using Machine Learning (ML) techniques, we scrutinized the relationship between various features—demographic, economic and others like major, tuition—and their impact to earning 10 years post graduation date.
 
 ### Approach
 <p>The following Machine Learning techniques were employed in various analyses:
